@@ -1,0 +1,413 @@
+/* styles.css */
+:root {
+  --primary-color: #0a0a0a;
+  --secondary-color: #1a1a1a;
+  --accent-color: #c41e3a;
+  --text-color: #f0f0f0;
+  --highlight-color: #ff4d4d;
+  --mask-color: #2a2a2a;
+  --font-family: 'Arial', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--accent-color);
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+#navbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
+
+#navbar a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  background: rgba(42, 42, 42, 0.3);
+  border: 1px solid var(--accent-color);
+}
+
+#navbar a:hover {
+  background: rgba(196, 30, 58, 0.3);
+  color: white;
+  transform: translateY(-2px);
+  border-color: var(--highlight-color);
+}
+
+main {
+  padding-top: 80px;
+}
+
+#welcome-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  overflow: hidden;
+}
+
+/* Blood droplet effect */
+.blood-droplet {
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background: var(--accent-color);
+  border-radius: 50% 50% 50% 0;
+  opacity: 0.3;
+  animation: fall 5s linear infinite;
+  z-index: 1;
+}
+
+#welcome-section h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  max-width: 800px;
+  line-height: 1.4;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+  color: var(--text-color);
+  font-family: 'Georgia', serif;
+  position: relative;
+  z-index: 2;
+}
+
+#welcome-section h1 span {
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
+.ghoul-word {
+  color: var(--accent-color) !important;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Projects Section - Ghoul Masks */
+#projects {
+  padding: 4rem 2rem;
+  background: rgba(26, 26, 26, 0.7);
+  border-top: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  position: relative;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.project-tile {
+  background: rgba(42, 42, 42, 0.4);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-color);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(196, 30, 58, 0.3);
+}
+
+.project-tile:hover {
+  transform: translateY(-15px) scale(1.05);
+  background: rgba(42, 42, 42, 0.6);
+  box-shadow: 0 20px 40px rgba(196, 30, 58, 0.3);
+  z-index: 10;
+  border-color: var(--accent-color);
+}
+
+/* Ghoul Mask Styling */
+.mask {
+  position: relative;
+  width: 120px;
+  height: 140px;
+  margin: 0 auto 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.mask::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--mask-color);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 2px solid var(--accent-color);
+}
+
+.mask-eye {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 25px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.mask-mouth {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background: var(--accent-color);
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Mask Colors */
+.kakuhou .mask::before {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+}
+
+.rize .mask::before {
+  background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+}
+
+.kaneki .mask::before {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+/* Project Info - Hidden by default */
+.project-info {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.2s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(20px);
+  text-align: center;
+  width: 90%;
+  padding: 1.5rem;
+  background: rgba(10, 10, 10, 0.85);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--accent-color);
+  z-index: 3;
+}
+
+.project-tile:hover .project-info {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+.project-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--highlight-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.project-info p {
+  color: var(--text-color);
+  opacity: 0.9;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+  flex-wrap: wrap;
+  background: rgba(26, 26, 26, 0.5);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: rgba(42, 42, 42, 0.6);
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 4px 8px rgba(196, 30, 58, 0.3);
+}
+
+.social-link:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: rgba(196, 30, 58, 0.7);
+  border-color: var(--highlight-color);
+  box-shadow: 0 8px 16px rgba(196, 30, 58, 0.5);
+}
+
+.social-link.github:hover {
+  color: #f0f0f0;
+}
+
+.social-link.linkedin:hover {
+  color: #f0f0f0;
+}
+
+.social-link.instagram:hover {
+  color: #f0f0f0;
+}
+
+.social-link.email:hover {
+  color: #f0f0f0;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #welcome-section h1 {
+    font-size: 2rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  #navbar {
+    padding: 1rem;
+  }
+  
+  .social-link {
+    width: 55px;
+    height: 55px;
+    font-size: 1.3rem;
+  }
+  
+  .project-tile {
+    height: 320px;
+  }
+  
+  .mask {
+    width: 100px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  #welcome-section h1 {
+    font-size: 1.6rem;
+  }
+  
+  .social-links {
+    gap: 1rem;
+  }
+  
+  .social-link {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+  
+  #navbar a {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .project-tile {
+    height: 300px;
+    padding: 1.5rem;
+  }
+  
+  .mask {
+    width: 80px;
+    height: 100px;
+  }
+  
+  .mask-eye {
+    width: 16px;
+    height: 20px;
+  }
+  
+  .mask-mouth {
+    width: 32px;
+    height: 6px;
+  }
+}
